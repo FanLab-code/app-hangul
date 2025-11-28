@@ -1,0 +1,153 @@
+/* 
+  style.css
+  C'est ici que nous définissons l'apparence de notre application.
+*/
+
+:root {
+    /* Palette de couleurs douces (Pastel) */
+    --primary-color: #FFD1DC; /* Rose pastel */
+    --secondary-color: #B0E0E6; /* Bleu poudre */
+    --accent-color: #FF6961; /* Rouge pastel doux pour l'accent */
+    --text-color: #333333; /* Gris foncé pour le texte (lisibilité) */
+    --bg-color: #FDFDFD; /* Blanc cassé pour le fond */
+    --card-bg: #FFFFFF; /* Blanc pur pour les cartes */
+    --shadow: 0 4px 6px rgba(0,0,0,0.1); /* Ombre douce */
+}
+
+/* Réinitialisation de base pour que tout soit propre */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif; /* Notre police coréenne */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Style de l'en-tête */
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--primary-color);
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+header p {
+    font-size: 1rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+/* Style de la navigation (Onglets) */
+nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 5px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+}
+
+.tab-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease; /* Animation fluide */
+    font-family: inherit;
+    font-weight: bold;
+    color: #888;
+}
+
+.tab-btn.active {
+    background-color: var(--secondary-color);
+    color: #fff;
+    transform: scale(1.05); /* Légère augmentation de taille */
+}
+
+/* Grille principale pour les cartes */
+#app-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive ! */
+    gap: 15px;
+    width: 90%;
+    max-width: 600px;
+    padding-bottom: 40px;
+}
+
+/* Style des cartes (Blocs) */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    user-select: none; /* Empêche la sélection du texte */
+    aspect-ratio: 1 / 1; /* Garde les cartes carrées */
+}
+
+/* Effet au survol (souris) */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Effet au clic (pression) */
+.card:active, .card.playing {
+    transform: scale(0.95);
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.hangul-char {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.romanization {
+    font-size: 1rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.card:active .romanization, .card.playing .romanization {
+    color: rgba(255,255,255,0.8);
+}
+
+/* Media Query pour les petits écrans (Mobile) */
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    #app-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur mobile */
+    }
+}

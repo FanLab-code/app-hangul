@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apprendre le Hangul</title>
+
+    <!-- Lien vers notre fichier de style CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Lien vers le fichier Manifest pour que l'app soit installable (PWA) -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Importation de la police 'Noto Sans KR' depuis Google Fonts pour un affichage correct du Coréen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <!-- Conteneur principal où les cartes vont s'afficher -->
+    <main id="app-container">
+        <!-- Le contenu sera généré ici par JavaScript -->
+    </main>
+
+    <!-- Zone de debug pour afficher les messages sur le téléphone -->
+    <div id="debug-log"
+        style="padding: 20px; background: #f0f0f0; margin-top: 20px; font-size: 0.8rem; color: #333; border-top: 1px solid #ccc;">
+        <p>État du système :</p>
+    </div>
+
+    <!-- Lien vers notre fichier JavaScript qui contient la logique -->
+    <script src="app.js"></script>
+
+    <!-- Script pour enregistrer le Service Worker (nécessaire pour la PWA) -->
+    <script>
+        // On vérifie si le navigateur supporte les Service Workers
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('Service Worker enregistré avec succès:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Échec de l\'enregistrement du Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+    </body>
+
+</html>
