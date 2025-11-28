@@ -4,7 +4,7 @@
   Il agit comme un intermédiaire entre l'app et internet.
 */
 
-const CACHE_NAME = 'hangul-app-v1';
+const CACHE_NAME = 'hangul-app-v2';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',

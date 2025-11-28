@@ -4,6 +4,8 @@
   Il gère les données (les lettres), les clics et la parole.
 */
 
+console.log("🚀 VERSION 2.0 CHARGÉE");
+
 // --- 1. Les Données (Voyelles et Consonnes) ---
 
 // Liste des voyelles de base
